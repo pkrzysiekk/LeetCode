@@ -5,8 +5,6 @@ class Solution(object):
         idx = 0
 
         number_str = list(str(x))
-        if len(number_str) > 32:
-            return 0
         j = len(number_str) - 1
         if number_str[0] == '-':
             arr[0] = "-"
