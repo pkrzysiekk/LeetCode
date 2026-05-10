@@ -1,4 +1,5 @@
 import random
+import time
 
 
 def knapsack_bottom(val, wt, cap):
@@ -15,9 +16,11 @@ def knapsack_bottom(val, wt, cap):
     return dp[n][cap]
 
 
+start = time.perf_counter()
 n = 10 ** 5
 val = [random.randint(0, 100) for _ in range(n)]
 wt = [random.randint(1, 20) for _ in range(n)]
 cap = 1000
-
 print(knapsack_bottom(val, wt, cap))
+end = time.perf_counter()
+print(f'{end - start}s')
