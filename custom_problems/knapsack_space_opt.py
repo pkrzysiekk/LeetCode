@@ -2,21 +2,23 @@ import random
 import time
 
 
-def knapsack_space_opt(val, wt, cap):
-    n = len(val)
-    dp = [0] * (cap + 1)
-    for i in range(1, len(wt)):
-        for j in range(cap, wt[i - 1] - 1, -1):
-            dp[j] = max(dp[j], dp[j-wt[i-1]] + val[i-1])
+def knapsack_space_opt(pages, cost, funds):
+    n = len(pages)
+    dp = [0] * (funds + 1)
+    for i in range(1, n + 1):
+        c = cost[i - 1]
+        p = pages[i - 1]
+        for j in range(funds, c - 1, -1):
+            dp[j] = max(dp[j], dp[j-c] + p)
 
-    return dp[cap]
+    return dp[funds]
 
 
 n = 10 ** 5
-val = [random.randint(0, 100) for _ in range(n)]
-wt = [random.randint(1, 20) for _ in range(n)]
-cap = 1000
+pages = [random.randint(0, 100) for _ in range(n)]
+cost = [random.randint(1, 20) for _ in range(n)]
+funds = 1000
 start = time.perf_counter()
-print(knapsack_space_opt(val, wt, cap))
+print(knapsack_space_opt(pages, cost, funds))
 end = time.perf_counter()
 print(f'{end - start}s')
