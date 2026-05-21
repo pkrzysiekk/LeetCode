@@ -1,6 +1,5 @@
 from suffix_tree import Tree
 import time
-import sys
 import random
 import string
 
@@ -43,7 +42,7 @@ def longest_palindrome_suffix_tree(s: str):
             collect_leaves(child, depth + edge_length(child),
                            path_nodes + [child])
 
-    collect_leaves(st.root, 0, [])
+   # collect_leaves(st.root, 0, [])
 
     best_start = 0
     best_len = 1
