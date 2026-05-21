@@ -1,11 +1,11 @@
-from suffix_tree import Tree
+from suffix_tree import Tree, mccreight
 import random
 import string
 import time
 
 
 def find_lrs(s):
-    tree = Tree({"A": s, "B": s})
+    tree = Tree({"A": s})
     text_len = len(s)
     max_len = 0
     start = 0
@@ -14,7 +14,7 @@ def find_lrs(s):
 
         path_len = path.end - path.start
 
-        if C < 2 or text_len == path_len:
+        if text_len == path_len:
             continue
 
         if path_len > max_len:
@@ -25,10 +25,9 @@ def find_lrs(s):
     return (start, end)
 
 
-tekst = "bananami"
 s = "".join(random.choices(string.ascii_lowercase, k=5 * (10 ** 5)))
 begin = time.perf_counter()
 start, end = (find_lrs(s))
 stop = time.perf_counter()
 print([start, end - 1])
-print("Took:", stop-begin)
+print(f"Took: {stop - begin}s")
