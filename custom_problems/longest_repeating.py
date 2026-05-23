@@ -10,7 +10,7 @@ def find_lrs(s):
     max_len = 0
     start = 0
     end = 0
-    for C, path in tree.maximal_repeats():
+    for _, path in tree.maximal_repeats():
 
         path_len = path.end - path.start
 
